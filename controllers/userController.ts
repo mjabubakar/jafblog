@@ -10,7 +10,7 @@ export const signIn: any = async (req: any, res: any, next: any) => {
 
     const user = await User.findOne({ email });
 
-    if (!user) {
+    if (!user || !password) {
         const error: any = new Error("Invalid email or password.");
         error.code = 409;
         return next(error);

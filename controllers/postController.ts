@@ -12,13 +12,19 @@ export const createPost: any = async (req: any, res: any, next: any) => {
         return next(error);
     }
 
+    const { title, body }: IPost = req.body;
+
+    if(!title || !body){
+        const error: any = new Error("Invalid input");
+        error.code = 422;
+        return next(error);
+    }
+
     if (!req.files) {
         const error: any = new Error("No image uploaded.");
         error.code = 422;
         return next(error);
     }
-
-    const { title, body }: IPost = req.body;
 
     const postUrl = url(title);
 
