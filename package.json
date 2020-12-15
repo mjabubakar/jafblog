@@ -4,7 +4,8 @@
   "description": "Node.js REST API for blogs.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node index.ts"
+    "start": "nodemon --exec ts-node index.ts",
+    "postinstall": "node gcloudscript.ts"
   },
   "repository": {
     "type": "git",

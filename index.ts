@@ -12,7 +12,7 @@ const app: express.Application = express();
 let http = require('http').Server(app);
 export let io = require('socket.io')(http, {
 	cors: {
-		origin: 'http://localhost:3000',
+		origin: process.env.FRONTEND_URL,
 		methods: ['GET', 'POST'],
 		allowedHeaders: ['Authorization'],
 		credentials: true,
