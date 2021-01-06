@@ -1,7 +1,7 @@
 import { Storage } from '@google-cloud/storage';
 
 const gc = new Storage({
-	keyFilename: process.env.GCLOUD_FILE_PATH,
+	keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
 	projectId: process.env.GCLOUD_PROJECT_ID,
 });
 
@@ -29,7 +29,8 @@ export const uploadImage = (file: any, name: string, type: string) =>
 			.on('finish', () => {
 				resolve(publicUrl);
 			})
-			.on('error', () => {
+			.on('error', (error) => {
+				console.log(error)
 				reject(`Unable to upload image, something went wrong.`);
 			})
 			.end(file.data);
